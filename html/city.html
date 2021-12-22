@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Thành Phố</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../js/city.js"></script>
+</head>
+<body>
+<div class="controller">
+    <div class="card-header d-flex flex-row-reverse">
+        <button class="btn btn-primary" onclick="showCreate()">Create</button>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">City</th>
+                <th scope="col">Country</th>
+                <th scope="col">GDP</th>
+                <th scope="col">Area</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody id="showAll">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="formEdit" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal">Sửa thông tin thành phố</h5>
+            </div>
+            <!-- body -->
+            <div class="modal-body">
+                <div class="modal-container">
+                    <form id="form">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="namecity1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">GDP</label>
+                            <input type="text" class="form-control" id="gdp1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Area</label>
+                            <input type="text" class="form-control" id="area1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Population</label>
+                            <input type="text" class="form-control" id="population1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">National</label>
+                            <select name="" id="national1">
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" id="idcity1">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button onclick="updateCity()" class="btn btn-secondary">Sửa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="formCreate" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal1">Add Department</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            </div>
+            <!-- body -->
+            <div class="modal-body">
+                <div class="modal-container">
+                    <form id="form1">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="namecity">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">GDP</label>
+                            <input type="text" class="form-control" id="gdp">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Area</label>
+                            <input type="text" class="form-control" id="area">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Population</label>
+                            <input type="text" class="form-control" id="population">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">National</label>
+                            <select name="" id="national">
+
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="createCity()" class="btn btn-secondary">Thêm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="formDetail" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleModal2">Add Department</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            </div>
+            <!-- body -->
+            <div class="modal-body">
+                <div class="modal-container">
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" id="namecity2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">GDP</label>
+                        <input type="text" class="form-control" id="gdp2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Area</label>
+                        <input type="text" class="form-control" id="area2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Population</label>
+                        <input type="text" class="form-control" id="population2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">National</label>
+                        <input type="text" class="form-control" id="national2">
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="closeDetailForm()" class="btn btn-secondary">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex ">
+    <button onclick="gdpOfEachCity()" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        BIỂU ĐỒ GDP CÁC THÀNH PHỐ DẠNG CỘT
+    </button>
+    <button onclick="gdpOfEachCityPie()" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+        BIỂU ĐỒ GDP CÁC THÀNH PHỐ DẠNG TRÒN
+    </button>
+</div>
+<div class="collapse" id="collapseExample">
+    <div id="gdpOfEachCity" style="height: 300px; width: 1000px;"></div>
+</div>
+<div class="collapse" id="collapseExample1">
+    <div id="gddPieChart" style="height: 300px; width: 1000px;"></div>
+</div>
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
