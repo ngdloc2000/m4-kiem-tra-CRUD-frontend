@@ -204,10 +204,10 @@ function gdpOfEachCityPie() {
             $.each(data, function (key, value) {
                 dataPoints.push({y: value.result, label: value.name});
             });
-            chart = new CanvasJS.Chart("gdpOfEachCity", {
+            chart = new CanvasJS.Chart("gdpPieChart", {
                 animationEnabled: true,
                 data: [{
-                    type: "column",
+                    type: "pie",
                     startAngle: 240,
                     yValueFormatString: "##0.00\"%\"",
                     indexLabel: "{label} {y}",
@@ -216,6 +216,5 @@ function gdpOfEachCityPie() {
             });
             chart.render();
         });
-
 }
 
